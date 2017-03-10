@@ -1,6 +1,6 @@
 {
   "name": "dvelum/module-sitemap",
-  "version": "1.0.4-dev",
+  "version": "1.0.4",
   "type": "dvelum-module",
   "description": "PHP/ExtJS-based web development platform",
   "keywords": ["dvelum","sitemap"],

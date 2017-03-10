@@ -1,7 +1,7 @@
 <?php
 return [
     'id' => 'dvelum_sitemap',
-    'version' => '1.0',
+    'version' => '1.0.4',
     'author' => 'Kirill Yegorov',
     'name' => 'DVelum Sitemap',
     'configs' => './configs',
