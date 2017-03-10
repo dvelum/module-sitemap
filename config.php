@@ -2,7 +2,7 @@
 return [
     'id' => 'dvelum_sitemap',
     'version' => '1.0',
-    'author' => 'Kirill Egorov',
+    'author' => 'Kirill Yegorov',
     'name' => 'DVelum Sitemap',
     'configs' => './configs',
     'vendor'=>'Dvelum',

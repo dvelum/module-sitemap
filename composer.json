@@ -1,0 +1,28 @@
+{
+  "name": "dvelum/module-sitemap",
+  "version": "1.0.4",
+  "type": "dvelum-module",
+  "description": "PHP/ExtJS-based web development platform",
+  "keywords": ["dvelum","sitemap"],
+  "homepage": "https://github.com/dvelum/module-sitemap",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Kirill Yegorov",
+      "email": "kirill@dvelum.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/dvelum/module-sitemap/issues",
+    "source": "https://github.com/dvelum/module-sitemap"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "require": {
+    "php":">=5.5",
+    "oomphinc/composer-installers-extender": "^1.1",
+    "dvelum/dvelum": ">=2.0.0"
+  }
+}
