@@ -17,12 +17,9 @@
     "issues": "https://github.com/dvelum/module-sitemap/issues",
     "source": "https://github.com/dvelum/module-sitemap"
   },
-  "config": {
-    "preferred-install": "dist"
-  },
   "require": {
     "php":">=5.5",
     "oomphinc/composer-installers-extender": "^1.1",
-    "dvelum/dvelum": ">=2.0.0"
+    "dvelum/dvelum": "2.*"
   }
 }
