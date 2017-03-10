@@ -2,7 +2,7 @@
   "name": "dvelum/module-sitemap",
   "version": "1.0.4",
   "type": "dvelum-module",
-  "description": "PHP/ExtJS-based web development platform",
+  "description": "Sitemap module for DVelum",
   "keywords": ["dvelum","sitemap"],
   "homepage": "https://github.com/dvelum/module-sitemap",
   "license": "GPL-3.0",
