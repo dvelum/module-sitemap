@@ -20,6 +20,6 @@
   "require": {
     "php":">=5.5",
     "oomphinc/composer-installers-extender": "^1.1",
-    "dvelum/dvelum": ">=1.0.2@dev"
+    "dvelum/dvelum": ">=1.0.2"
   }
 }
