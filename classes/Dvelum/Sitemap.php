@@ -1,20 +1,27 @@
 <?php
-class Dvelum_Sitemap
+namespace Dvelum;
+
+use Dvelum\App\Router\RouterInterface;
+use Dvelum\Request;
+use Dvelum\Sitemap\AbstractAdapter;
+
+class Sitemap
 {
     protected $adapters = [];
     protected $url = '/sitemap.xml';
     protected $host = '127.0.0.1';
     protected $scheme = 'http://';
     /**
-     * @var Router
+     * @var RouterInterface
      */
     protected $router;
 
-    public function __construct(Router $router)
+    public function __construct(RouterInterface $router)
     {
-        $this->host = Request::server('HTTP_HOST', 'string', '');
+        $request = Request::factory();
+        $this->host = $request->server('HTTP_HOST', 'string', '');
         $this->router = $router;
-        if(Request::isHttps()){
+        if($request->isHttps()){
             $this->scheme = 'https://';
         }
     }
@@ -31,9 +38,9 @@ class Dvelum_Sitemap
     /**
      * Add sitemap generator
      * @param $code
-     * @param Dvelum_Sitemap_Adapter $adapter
+     * @param AbstractAdapter $adapter
      */
-    public function addAdapter($code, Dvelum_Sitemap_Adapter $adapter)
+    public function addAdapter($code, AbstractAdapter $adapter)
     {
         $adapter->setRouter($this->router);
         $adapter->setScheme($this->scheme);

@@ -1,24 +1,31 @@
 <?php
-class Dvelum_Backend_Sitemap_Installer extends Externals_Installer
+namespace Dvelum\Sitemap;
+
+use Dvelum\Config\ConfigInterface;
+use Dvelum\App\Session\User;
+use Dvelum\Orm\Model;
+use Dvelum\Orm\Object;
+
+class Installer extends \Externals_Installer
 {
     /**
      * Install
-     * @param Config_Abstract $applicationConfig
-     * @param Config_Abstract $moduleConfig
+     * @param ConfigInterface $applicationConfig
+     * @param ConfigInterface $moduleConfig
      * @return boolean
      */
-    public function install(Config_Abstract $applicationConfig, Config_Abstract $moduleConfig)
+    public function install(ConfigInterface $applicationConfig, ConfigInterface $moduleConfig)
     {
         $userId = User::getInstance()->getId();
 
         $pagesModel = Model::factory('Page');
-        $pageItem = $pagesModel->getList(false,['func_code' => 'dvelum_sitemap']);
+        $pageItemExists = $pagesModel->query()->filters(['func_code' => 'dvelum_sitemap'])->getCount();
 
-        if(empty($pageItem))
+        if(!$pageItemExists)
         {
             try{
-                $sitemapPage = new Db_Object('Page');
-                $sitemapPage->setValues(array(
+                $sitemapPage = Object::factory('Page');
+                $sitemapPage->setValues([
                     'code'=>'sitemap',
                     'is_fixed'=>1,
                     'html_title'=>'Sitemap XML',
@@ -42,15 +49,15 @@ class Dvelum_Backend_Sitemap_Installer extends Externals_Installer
                     'date_published'=>date('Y-m-d H:i:s'),
                     'in_site_map'=>false,
                     'default_blocks'=>true
-                ));
+                ]);
 
                 if(!$sitemapPage->saveVersion(true, false))
-                    throw new Exception('Cannot create sitemap page');
+                    throw new \Exception('Cannot create sitemap page');
 
                 if(!$sitemapPage->publish())
-                    throw new Exception('Cannot publish sitemap page');
+                    throw new \Exception('Cannot publish sitemap page');
 
-            }catch (Exception $e){
+            }catch (\Exception $e){
                 $this->errors[] = $e->getMessage();
                 return false;
             }
@@ -59,21 +66,21 @@ class Dvelum_Backend_Sitemap_Installer extends Externals_Installer
 
     /**
      * Uninstall
-     * @param Config_Abstract $applicationConfig
-     * @param Config_Abstract $moduleConfig
+     * @param ConfigInterface $applicationConfig
+     * @param ConfigInterface $moduleConfig
      * @return boolean
      */
-    public function uninstall(Config_Abstract $applicationConfig, Config_Abstract $moduleConfig)
+    public function uninstall(ConfigInterface $applicationConfig, ConfigInterface $moduleConfig)
     {
         $pagesModel = Model::factory('Page');
-        $pageItems = $pagesModel->getList(false,['func_code' => 'dvelum_sitemap']);
+        $pageItems = $pagesModel->query()->filters(['func_code' => 'dvelum_sitemap'])->fetchAll();
 
         foreach($pageItems as $item)
         {
             try{
-                $page = Db_Object::factory('Page', $item['id']);
+                $page = Object::factory('Page', $item['id']);
                 $page->unpublish();
-            }catch (Exception $e){
+            }catch (\Exception $e){
                 $this->errors[] = $e->getMessage();
                 return false;
             }

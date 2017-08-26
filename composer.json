@@ -18,8 +18,8 @@
     "source": "https://github.com/dvelum/module-sitemap"
   },
   "require": {
-    "php":">=5.5",
+    "php":">=7.1",
     "oomphinc/composer-installers-extender": "^1.1",
-    "dvelum/dvelum": ">=1.0.2"
+    "dvelum/dvelum": ">=2.0.0"
   }
 }

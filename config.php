@@ -1,6 +1,6 @@
 <?php
 return [
-    'id' => 'dvelum_sitemap',
+    'id' => 'dvelum-module-sitemap',
     'version' => '1.0.4',
     'author' => 'Kirill Yegorov',
     'name' => 'DVelum Sitemap',
@@ -10,5 +10,5 @@ return [
     'autoloader'=> [
         './classes'
     ],
-    'post-install'=>'Dvelum_Backend_Sitemap_Installer'
+    'post-install'=>'\\Dvelum\\Sitemap\\Installer'
 ];

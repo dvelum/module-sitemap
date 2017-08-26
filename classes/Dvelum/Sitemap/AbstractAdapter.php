@@ -1,5 +1,9 @@
 <?php
-abstract class Dvelum_Sitemap_Adapter
+namespace Dvelum\Sitemap;
+
+use Dvelum\App\Router\RouterInterface;
+
+abstract class AbstractAdapter
 {
     const CHANGEFREQ_HOURLY = 'hourly';
     const CHANGEFREQ_DAILY = 'daily';
@@ -12,7 +16,7 @@ abstract class Dvelum_Sitemap_Adapter
     protected $scheme = 'http://';
 
     /**
-     * @var Router
+     * @var RouterInterface
      */
     protected $router;
 
@@ -35,9 +39,9 @@ abstract class Dvelum_Sitemap_Adapter
     }
 
     /**
-     * @param Router $router
+     * @param RouterInterface $router
      */
-    public function setRouter(Router $router)
+    public function setRouter(RouterInterface $router)
     {
         $this->router = $router;
     }

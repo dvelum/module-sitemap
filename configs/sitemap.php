@@ -1,4 +1,4 @@
 <?php
 return[
-    'pages' => 'Dvelum_Sitemap_Pages'
+    'pages' => '\\Dvelum\\Sitemap\\Adapter\\Pages'
 ];

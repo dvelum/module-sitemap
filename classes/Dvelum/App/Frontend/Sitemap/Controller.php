@@ -1,11 +1,17 @@
 <?php
-class Dvelum_Frontend_Sitemap_Controller extends Frontend_Controller
+namespace Dvelum\App\Frontend\Sitemap;
+
+use Dvelum\App\Frontend;
+use Dvelum\Sitemap;
+use Dvelum\Config;
+
+class Controller extends Frontend\Controller
 {
     public function indexAction()
     {
-        $curCode = Request::getInstance()->getPart(1);
-        $sitemap = new Dvelum_Sitemap($this->_router);
-        $sitemap->setUrl(Request::url([$this->_router->findUrl('dvelum_sitemap')],false));
+        $curCode = $this->request->getPart(1);
+        $sitemap = new Sitemap($this->router);
+        $sitemap->setUrl($this->request->url([$this->router->findUrl('dvelum_sitemap')],false));
 
         $siteMapAdapters = Config::storage()->get('sitemap.php');
 
@@ -25,8 +31,8 @@ class Dvelum_Frontend_Sitemap_Controller extends Frontend_Controller
             $xml = $sitemap->getIndexXml();
         }
 
-        header('Content-type: text/xml; charset=utf-8');
-        Response::put($xml);
-        Application::close();
+        $this->response->header('Content-type: text/xml; charset=utf-8');
+        $this->response->put($xml);
+        $this->response->send();
     }
 }
