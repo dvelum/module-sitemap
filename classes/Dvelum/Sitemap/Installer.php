@@ -4,7 +4,7 @@ namespace Dvelum\Sitemap;
 use Dvelum\Config\ConfigInterface;
 use Dvelum\App\Session\User;
 use Dvelum\Orm\Model;
-use Dvelum\Orm\Object;
+use Dvelum\Orm\Record;
 
 class Installer extends \Externals_Installer
 {
@@ -24,7 +24,7 @@ class Installer extends \Externals_Installer
         if(!$pageItemExists)
         {
             try{
-                $sitemapPage = Object::factory('Page');
+                $sitemapPage = Record::factory('Page');
                 $sitemapPage->setValues([
                     'code'=>'sitemap',
                     'is_fixed'=>1,
@@ -78,7 +78,7 @@ class Installer extends \Externals_Installer
         foreach($pageItems as $item)
         {
             try{
-                $page = Object::factory('Page', $item['id']);
+                $page = Record::factory('Page', $item['id']);
                 $page->unpublish();
             }catch (\Exception $e){
                 $this->errors[] = $e->getMessage();

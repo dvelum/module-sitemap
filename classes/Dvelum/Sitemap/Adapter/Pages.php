@@ -21,7 +21,6 @@ namespace Dvelum\Sitemap\Adapter;
 
 use Dvelum\Orm\Model;
 use Dvelum\Request;
-use Dvelum\Response;
 use Dvelum\Sitemap\AbstractAdapter;
 
 class Pages extends AbstractAdapter
