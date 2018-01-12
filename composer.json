@@ -1,6 +1,6 @@
 {
   "name": "dvelum/module-sitemap",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "dvelum-module",
   "description": "Sitemap module for DVelum",
   "keywords": ["dvelum","sitemap"],
