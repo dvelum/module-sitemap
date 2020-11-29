@@ -1,6 +1,6 @@
 {
   "name": "dvelum/module-sitemap",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "dvelum-module",
   "description": "Sitemap module for DVelum",
   "keywords": ["dvelum","sitemap"],
@@ -19,7 +19,7 @@
   },
   "require": {
     "php":">=7.1",
-    "oomphinc/composer-installers-extender": "^1.1",
+    "oomphinc/composer-installers-extender": "^2.0",
     "dvelum/dvelum": ">=2.0.0"
   }
 }
